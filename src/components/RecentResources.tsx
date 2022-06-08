@@ -1,4 +1,4 @@
-import SingleStudyResourceCarousel from "./SingleStudyResourceCarousel";
+import SingleStudyResource from "./SingleStudyResource";
 import { ResourceDataInterface } from "./interfaces";
 
 export default function RecentResources(props: {
@@ -8,7 +8,7 @@ export default function RecentResources(props: {
   const recent10Resources = props.allResources.slice(0, 10);
 
   const recent10Carousel: JSX.Element[] = recent10Resources.map((resource) => (
-    <SingleStudyResourceCarousel
+    <SingleStudyResource
       key={resource.resourceid}
       resourceName={resource.name}
       authorName={resource.author_name}
@@ -33,9 +33,7 @@ export default function RecentResources(props: {
       <p className="sub-heading">
         Find the latest study resources being shared by members!
       </p>
-      <section className="resource-list">
-        <div className="photobanner">{recent10Carousel}</div>
-      </section>
+        <div className="grid-wrapper">{recent10Carousel}</div>
     </>
   );
 }

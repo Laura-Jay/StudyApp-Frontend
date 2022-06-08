@@ -273,15 +273,23 @@ export default function MainContent(): JSX.Element {
               />
             </div>
           )}
+          <div className="main-list">
           <RecentResources
             allResources={allResources}
             loggedInUserId={parseInt(currentUser)}
           />
+          </div>
         </>
       )}
       {/* rendering on when we click to the random page */}
       {view === "random" && (
         <>
+        <header>
+         <h1>BOOKFACE</h1>
+<div className="login">
+  <button onClick={handleLogOut}>Log Out</button>
+</div>
+</header>
           <div className="button-bar">
             <button onClick={handleHomeClick}>Home</button>
           </div>
@@ -301,7 +309,7 @@ export default function MainContent(): JSX.Element {
       )}
       {/* rendering on when we click to the study-list*/}
       {view === "study-list" && (
-        <section className="study-list">
+       <>
          <header>
          <h1>BOOKFACE</h1>
    
@@ -317,8 +325,10 @@ export default function MainContent(): JSX.Element {
           <p className="sub-heading">
             Add resources to your list and work through them at your own pace.
           </p>
+          <div className="main-list">
           <MyStudyList currentUserId={parseInt(currentUser)} />
-        </section>
+          </div>
+          </>
       )}
       <Footer />
     </>

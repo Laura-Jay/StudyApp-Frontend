@@ -8,7 +8,7 @@ export default function searchTermResources(props: {
 }): JSX.Element {
   return (
     <>
-      <div className="resource-list">
+      <div className="grid-wrapper">
         {props.allResources.map((resource) => (
           <SingleStudyResource
             resourceName={resource.name}
