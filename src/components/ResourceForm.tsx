@@ -114,6 +114,7 @@ export default function ResourceForm(props: { userid: number }): JSX.Element {
   return (
     <>
       <h1 className="heading">Resource Form</h1>
+      <div className="resource-form-container">
       <div className="resource-form">
         <form onSubmit={handleSubmit}>
           <label htmlFor="resource-form-resourceName">Resource Name:</label>
@@ -225,6 +226,7 @@ export default function ResourceForm(props: { userid: number }): JSX.Element {
 
           <button>Submit</button>
         </form>
+      </div>
       </div>
     </>
   );

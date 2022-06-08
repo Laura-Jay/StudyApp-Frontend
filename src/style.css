@@ -16,7 +16,7 @@ main {
   display: flex;
   align-items: center;
   height: 75px;
-  background: linear-gradient(90.41deg, #3299d4 1.14%, #18bdda 100%);
+  background: #FF5A5F; 
   color: white;
   padding: 20px;
   margin-bottom: 30px;
@@ -27,7 +27,7 @@ main {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  background: linear-gradient(90.41deg, #3299d4 1.14%, #18bdda 100%);
+  background: #FF5A5F; 
   color: white;
   padding: 10px;
   font-weight: lighter;
@@ -42,9 +42,9 @@ main {
 }
 
 .resource-list {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  position: relative;
+  overflow: hidden;
+  height: 475px;
 }
 
 a {
@@ -68,6 +68,108 @@ a {
   max-width: 800px;
   margin: 30px auto;
   box-shadow: 2px 5px 5px 1px rgba(120, 120, 120, 0.44);
+}
+
+.single-resource-element-carousel {
+  display: flex;
+  flex-direction: column;
+  padding: 10 10px;
+  word-wrap: break-word;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  background: #E4DDDD; 
+  border-width: 4px;
+  border-radius: 10px;
+  color: #FF5A5F;
+  width: 275px;
+  height: 375px;
+  box-shadow: 2px 5px 5px 1px rgba(120, 120, 120, 0.44);
+}
+
+.single-resource-page {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  border-style: solid;
+  border-width: 4px;
+  border-color: #FF5A5F;
+  border-radius: 10px;
+  color: black;
+  padding: 20px;
+  width: 80%;
+  max-width: 800px;
+  margin: 30px auto;
+  box-shadow: 2px 5px 5px 1px rgba(120, 120, 120, 0.44);
+}
+
+.search-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.grid-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 30px;
+  width: 80%;
+  max-width: 800px;
+  margin: 0 auto;
+
+}
+
+.grid-element {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.study-resource-element {
+  display: flex;
+  flex-direction: column;
+  padding: 10 10px;
+  word-wrap: break-word;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  background: #E4DDDD; 
+  border-width: 4px;
+  border-radius: 10px;
+  color: #FF5A5F;
+  width: 275px;
+  height: 375px;
+  box-shadow: 2px 5px 5px 1px rgba(120, 120, 120, 0.44);
+}
+
+.photobanner {
+  position:absolute; 
+  top:10px; 
+  bottom:10px;
+  left:0px; 
+  overflow:hidden; 
+  animation: bannermove 20s linear infinite;
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+}
+
+.photobanner:hover {
+  animation-play-state: paused;
+}
+
+@keyframes bannermove {
+  0% {
+      transform: translate(0, 0);
+  }
+  100% {
+      transform: translate(-59%, 0);
+  }
 }
 
 .tag-cloud {
@@ -95,7 +197,7 @@ button {
   font-size: 1rem;
   font-weight: bold;
   border-radius: 5px;
-  background: linear-gradient(90.41deg, #3299d4 1.14%, #18bdda 100%);
+  background: #f1787c;
   color: white;
   border: none;
   cursor: pointer;
@@ -104,7 +206,7 @@ button {
 }
 
 button:hover {
-  background: linear-gradient(90.41deg, #711f8d 1.14%, #b04cd1 100%);
+  background: linear-gradient(90.41deg, #9b41b9 1.14%, #ce7de9 100%);
 }
 
 .upload--button {
@@ -112,7 +214,7 @@ button:hover {
   font-size: 1rem;
   font-weight: bold;
   border-radius: 5px;
-  background: linear-gradient(90.41deg, #3299d4 1.14%, #18bdda 100%);
+  background: #f1787c;
   color: white;
   border: none;
   cursor: pointer;
@@ -128,13 +230,13 @@ button:hover {
   font-size: 1rem;
   font-weight: bold;
   border-radius: 5px;
-  background: linear-gradient(90.41deg, #3299d4 1.14%, #18bdda 100%);
+  background: #f1787c;
   color: white;
   border: none;
   cursor: pointer;
   padding: 5px 20px;
   margin-bottom: 20px;
-  margin-left: 36%;
+  margin: 10 auto;
   justify-content: center;
   align-items: center;
   width: 200px;
@@ -165,7 +267,8 @@ button:hover {
 }
 
 .heading {
-  margin-left: 40px;
+  color: #FF5A5F;
+  text-align: center;
 }
 
 .heading-center {
@@ -173,7 +276,7 @@ button:hover {
 }
 
 .sub-heading {
-  margin-left: 40px;
+  text-align: center;
   margin-bottom: 40px;
 }
 
@@ -212,6 +315,21 @@ button:hover {
   margin: 0 auto;
 }
 
+.resource-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.resource-form {
+  background: #F4A5A7;
+  border-radius: 10px;
+  width: 85%;
+  max-width: 800px;
+  
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -236,7 +354,7 @@ label {
   margin-bottom: 8px;
   margin-top: 8px;
   text-align: center;
-  color: #3299d4;
+  color: white;
 }
 
 .form--input {

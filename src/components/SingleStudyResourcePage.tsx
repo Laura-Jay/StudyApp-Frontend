@@ -111,7 +111,7 @@ export default function SingleStudyResourcePage(): JSX.Element {
       <button className="home--button" onClick={() => navigate(-1)}>
         Home
       </button>
-      <section className="single-resource-element">
+      <section className="single-resource-page">
         <h3>{currentResource.name}</h3>
         <h3>{currentResource.author_name}</h3>
         <h3>{currentResource.content_type}</h3>
@@ -120,7 +120,7 @@ export default function SingleStudyResourcePage(): JSX.Element {
         <p>{currentResource.description}</p>
         <h3>{currentResource.tags}</h3>
         <h3>{currentResource.stage}</h3>
-        <h3>{currentResource.original_recommendation}</h3>
+        <p>{currentResource.original_recommendation}</p>
         <p>{currentResource.recommendation_reasoning}</p>
         {/*logic to only display the add to study list button  and comments if the user is logged in*/}
         {user_id !== "0" && (

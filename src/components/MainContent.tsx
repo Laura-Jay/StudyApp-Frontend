@@ -191,7 +191,6 @@ export default function MainContent(): JSX.Element {
           </div>
           <div className="button-bar">
             <button onClick={handleRandomPageClick}>See Random</button>
-            <button>Popular Content</button>
             {currentUser !== (0 || "0") && (
               <button onClick={handleStudyListClick}>My Study List</button>
             )}
@@ -241,7 +240,7 @@ export default function MainContent(): JSX.Element {
             </div>
           )}
           {isTagSelected && (
-            <div>
+            <div className="search-list">
               <h1 className="heading">Tag Results</h1>
               <button
                 className="closeTag--button"
@@ -249,7 +248,6 @@ export default function MainContent(): JSX.Element {
               >
                 Close Tag Search
               </button>
-
               <TagResourceList
                 allResources={displayedResources}
                 loggedInUserId={parseInt(currentUser)}
@@ -264,7 +262,15 @@ export default function MainContent(): JSX.Element {
         </>
       )}
       {/* rendering on when we click to the random page */}
-      {view === "random" && <RandomResourcePage allResources={allResources} />}
+      {view === "random" && 
+      <>
+      <div className="button-bar">
+     
+      <button onClick={handleHomeClick}>Home</button>
+     
+    </div>
+      <RandomResourcePage allResources={allResources}  />
+      </>}
       {/* rendering on when we click to the form*/}
       {view === "form" && (
         <>

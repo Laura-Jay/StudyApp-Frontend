@@ -1,5 +1,6 @@
 import SingleStudyResource from "./SingleStudyResource";
 import { ResourceDataInterface } from "./interfaces";
+import SingleStudyResourceCarousel from "./SingleStudyResourceCarousel";
 
 export default function RecentResources(props: {
   allResources: ResourceDataInterface[];
@@ -8,9 +9,9 @@ export default function RecentResources(props: {
   //this function has resources which match the tag selected passed down as props, the 5 most recent tag-matched resources are then mapped onto 5 study resource tiles and diplayed
   return (
     <>
-      <div className="resource-list">
+      <div className="grid-wrapper">
         {props.allResources.slice(0, 5).map((resource) => (
-          <SingleStudyResource
+          <SingleStudyResourceCarousel
             key={resource.resourceid}
             resourceName={resource.name}
             authorName={resource.author_name}

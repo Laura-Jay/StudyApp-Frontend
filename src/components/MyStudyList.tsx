@@ -43,13 +43,6 @@ export default function MyStudyList(props: MyStudyListProps): JSX.Element {
 
   const currentUserid = props.currentUserId;
 
-  //handleDelete sends a delete request to remove a resource for a specific user's study list from the databse
-  async function handleDelete(resourceId: number) {
-    const response = await axios.delete(
-      backendURL + "studylist/" + currentUserid + "/" + resourceId
-    );
-    console.log(response);
-  }
 
   const studyList = studyListArray.map((resource) => (
     <>
@@ -69,13 +62,8 @@ export default function MyStudyList(props: MyStudyListProps): JSX.Element {
         key={resource.resourceid}
         loggedInUserId={currentUserid}
       />
-      <div className="button-container">
-        <button onClick={() => handleDelete(resource.resourceid)}>
-          Remove from Study List
-        </button>
-      </div>
     </>
   ));
 
-  return <>{studyList}</>;
+  return <div className="grid-wrapper">{studyList}</div>;
 }
