@@ -6,25 +6,25 @@ import { SingleStudyResourceProps, likeDataInterface } from "./interfaces";
 export default function SingleStudyResource(
   props: SingleStudyResourceProps
 ): JSX.Element {
-  //adding like for each resource and posting to backend
-  async function handleLike() {
-    const requestData: likeDataInterface = {
-      likeValue: true,
-      resourceID: props.resourceId,
-      userID: props.userId,
-    };
-    await axios.post(backendURL + "likes", requestData);
-  }
+  // //adding like for each resource and posting to backend
+  // async function handleLike() {
+  //   const requestData: likeDataInterface = {
+  //     likeValue: true,
+  //     resourceID: props.resourceId,
+  //     userID: props.userId,
+  //   };
+  //   await axios.post(backendURL + "likes", requestData);
+  // }
 
-  //adding dislike for each resource and posting to backend
-  async function handleDislike() {
-    const requestData: likeDataInterface = {
-      likeValue: false,
-      resourceID: props.resourceId,
-      userID: props.userId,
-    };
-    await axios.post(backendURL + "likes", requestData);
-  }
+  // //adding dislike for each resource and posting to backend
+  // async function handleDislike() {
+  //   const requestData: likeDataInterface = {
+  //     likeValue: false,
+  //     resourceID: props.resourceId,
+  //     userID: props.userId,
+  //   };
+  //   await axios.post(backendURL + "likes", requestData);
+  // }
 
   return (
     <div>
@@ -37,7 +37,7 @@ export default function SingleStudyResource(
           props.loggedInUserId
         }
       >
-        <section className="single-resource-element">
+        <section className="study-resource-element">
           <h3>
             <strong>Resource Name:</strong> {props.resourceName}
           </h3>
@@ -53,14 +53,6 @@ export default function SingleStudyResource(
           </p>
         </section>
       </a>
-      <div className="button-bar">
-        <button className="like-button" onClick={handleLike}>
-          👍
-        </button>
-        <button className="like-button" onClick={handleDislike}>
-          👎
-        </button>
-      </div>
     </div>
   );
 }

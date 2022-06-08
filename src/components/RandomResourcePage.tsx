@@ -37,7 +37,7 @@ export default function RandomResourcePage(props: {
 
   return (
     <>
-      <section className="single-resource-element">
+      <section className="single-resource-page">
         <h3>Name: {currentResource.name}</h3>
         <h3>Author: {currentResource.author_name}</h3>
         <h3>{currentResource.content_type}</h3>
