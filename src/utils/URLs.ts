@@ -1,9 +1,9 @@
 export const backendURL =
   process.env.NODE_ENV === "production"
-    ? "https://study-resources-c4c2.herokuapp.com/"
+    ? "https://study-frontend-lj.herokuapp.com/"
     : "http://localhost:4000/";
 
 export const frontendURL: string =
   process.env.NODE_ENV === "production"
-    ? "https://academy-study-resources.netlify.app/"
+    ? "https://studyapp-lj.netlify.app/"
     : "http://localhost:3000/";
