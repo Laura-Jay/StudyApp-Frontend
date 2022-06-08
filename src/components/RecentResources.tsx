@@ -1,13 +1,10 @@
 import SingleStudyResourceCarousel from "./SingleStudyResourceCarousel";
 import { ResourceDataInterface } from "./interfaces";
 
-
-
 export default function RecentResources(props: {
   allResources: ResourceDataInterface[];
   loggedInUserId: number;
 }): JSX.Element {
-
   const recent10Resources = props.allResources.slice(0, 10);
 
   const recent10Carousel: JSX.Element[] = recent10Resources.map((resource) => (
@@ -26,8 +23,8 @@ export default function RecentResources(props: {
       userId={resource.userid}
       resourceId={resource.resourceid}
       loggedInUserId={props.loggedInUserId}
-    />))
-
+    />
+  ));
 
   // component contains list of 10 most recently added resources mapped to the SingleStudyResource component
   return (
@@ -40,5 +37,5 @@ export default function RecentResources(props: {
         <div className="photobanner">{recent10Carousel}</div>
       </section>
     </>
-  )
+  );
 }

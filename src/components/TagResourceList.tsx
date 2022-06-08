@@ -1,4 +1,3 @@
-import SingleStudyResource from "./SingleStudyResource";
 import { ResourceDataInterface } from "./interfaces";
 import SingleStudyResourceCarousel from "./SingleStudyResourceCarousel";
 

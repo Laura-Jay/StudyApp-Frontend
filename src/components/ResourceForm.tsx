@@ -94,7 +94,7 @@ export default function ResourceForm(props: { userid: number }): JSX.Element {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const response = await axios.post(backendURL + "resources", formData);
-    const currentResourceid = response.data.data.info[0].resourceid
+    const currentResourceid = response.data.data.info[0].resourceid;
     handleDiscordPost(currentResourceid);
     setFormData({
       resourceName: "",
@@ -108,125 +108,126 @@ export default function ResourceForm(props: { userid: number }): JSX.Element {
       reasonForRecommendation: "",
       userid: props.userid,
     });
-  
   };
 
   return (
     <>
       <h1 className="heading">Resource Form</h1>
       <div className="resource-form-container">
-      <div className="resource-form">
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="resource-form-resourceName">Resource Name:</label>
-          <input
-            className="form--input"
-            onChange={(event) => handleFormChange(event)}
-            type="text"
-            placeholder="type resource name here"
-            name="resourceName"
-            value={formData.resourceName}
-            id="resource-form-resourceName"
-          />
-          <label htmlFor="resource-form-authorName">Author Name:</label>
-          <input
-            className="form--input"
-            onChange={(event) => handleFormChange(event)}
-            type="text"
-            placeholder="type Author name here"
-            name="authorName"
-            value={formData.authorName}
-            id="resource-form-authorName"
-          />
-          <label htmlFor="resource-form-URL">URL:</label>
-          <input
-            className="form--input"
-            onChange={(event) => handleFormChange(event)}
-            type="text"
-            placeholder="type URL name here"
-            name="URL"
-            value={formData.URL}
-            id="resource-form-URL"
-          />
-          <label htmlFor="resource-form-description">Description:</label>
-          <textarea
-            onChange={(event) => handleFormChange(event)}
-            className="resource-form--description"
-            placeholder="type description here"
-            name="description"
-            value={formData.description}
-            id="resource-form-description"
-          />
-          <label htmlFor="resource-form-tags">Tags:</label>
-          <input
-            className="form--input"
-            onChange={(event) => handleFormChange(event)}
-            type="text"
-            placeholder="type tags here (example: react, typescript, online course)"
-            name="tags"
-            value={formData.tags}
-            id="resource-form-tags"
-          />
-          <label htmlFor="resource-form-resourceType">Resource Type:</label>
-          <select
-            className="form--select"
-            onChange={(event) => handleFormChange(event)}
-            value={formData.resourceType}
-            name="resourceType"
-            id="resource-form--resourceType"
-          >
-            {resourceTypesList.map((type) => (
-              <option key={type} value={type}>
-                {type}
-              </option>
-            ))}
-          </select>
+        <div className="resource-form">
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="resource-form-resourceName">Resource Name:</label>
+            <input
+              className="form--input"
+              onChange={(event) => handleFormChange(event)}
+              type="text"
+              placeholder="type resource name here"
+              name="resourceName"
+              value={formData.resourceName}
+              id="resource-form-resourceName"
+            />
+            <label htmlFor="resource-form-authorName">Author Name:</label>
+            <input
+              className="form--input"
+              onChange={(event) => handleFormChange(event)}
+              type="text"
+              placeholder="type Author name here"
+              name="authorName"
+              value={formData.authorName}
+              id="resource-form-authorName"
+            />
+            <label htmlFor="resource-form-URL">URL:</label>
+            <input
+              className="form--input"
+              onChange={(event) => handleFormChange(event)}
+              type="text"
+              placeholder="type URL name here"
+              name="URL"
+              value={formData.URL}
+              id="resource-form-URL"
+            />
+            <label htmlFor="resource-form-description">Description:</label>
+            <textarea
+              onChange={(event) => handleFormChange(event)}
+              className="resource-form--description"
+              placeholder="type description here"
+              name="description"
+              value={formData.description}
+              id="resource-form-description"
+            />
+            <label htmlFor="resource-form-tags">Tags:</label>
+            <input
+              className="form--input"
+              onChange={(event) => handleFormChange(event)}
+              type="text"
+              placeholder="type tags here (example: react, typescript, online course)"
+              name="tags"
+              value={formData.tags}
+              id="resource-form-tags"
+            />
+            <label htmlFor="resource-form-resourceType">Resource Type:</label>
+            <select
+              className="form--select"
+              onChange={(event) => handleFormChange(event)}
+              value={formData.resourceType}
+              name="resourceType"
+              id="resource-form--resourceType"
+            >
+              {resourceTypesList.map((type) => (
+                <option key={type} value={type}>
+                  {type}
+                </option>
+              ))}
+            </select>
 
-          <label htmlFor="resource-form-weeks">Build Phase Week:</label>
-          <select
-            className="form--select"
-            onChange={(event) => handleFormChange(event)}
-            value={formData.buildPhaseWeek}
-            name="buildPhaseWeek"
-            id="resource-form--buildPhaseWeek"
-          >
-            {buildPhaseWeeks.map((week) => (
-              <option key={week} value={week}>
-                {week}
-              </option>
-            ))}
-          </select>
+            <label htmlFor="resource-form-weeks">Build Phase Week:</label>
+            <select
+              className="form--select"
+              onChange={(event) => handleFormChange(event)}
+              value={formData.buildPhaseWeek}
+              name="buildPhaseWeek"
+              id="resource-form--buildPhaseWeek"
+            >
+              {buildPhaseWeeks.map((week) => (
+                <option key={week} value={week}>
+                  {week}
+                </option>
+              ))}
+            </select>
 
-          <label htmlFor="resource-form-recommendation">Recommendation:</label>
-          <select
-            className="form--select"
-            onChange={(event) => handleFormChange(event)}
-            value={formData.recommendation}
-            name="recommendation"
-            id="resource-form--recommendation"
-          >
-            {recommendationList.map((rec) => (
-              <option key={rec} value={rec}>
-                {rec}
-              </option>
-            ))}
-          </select>
+            <label htmlFor="resource-form-recommendation">
+              Recommendation:
+            </label>
+            <select
+              className="form--select"
+              onChange={(event) => handleFormChange(event)}
+              value={formData.recommendation}
+              name="recommendation"
+              id="resource-form--recommendation"
+            >
+              {recommendationList.map((rec) => (
+                <option key={rec} value={rec}>
+                  {rec}
+                </option>
+              ))}
+            </select>
 
-          <label htmlFor="resource-form-reason-recommendation">
-            Reason for recommendation:
-          </label>
-          <textarea
-            className="resource-form--description"
-            onChange={(event) => handleFormChange(event)}
-            placeholder="type reason here"
-            name="reasonForRecommendation"
-            value={formData.reasonForRecommendation}
-            id="resource-form-reason-recommendation"
-          />
-          <br />
+            <label htmlFor="resource-form-reason-recommendation">
+              Reason for recommendation:
+            </label>
+            <textarea
+              className="resource-form--description"
+              onChange={(event) => handleFormChange(event)}
+              placeholder="type reason here"
+              name="reasonForRecommendation"
+              value={formData.reasonForRecommendation}
+              id="resource-form-reason-recommendation"
+            />
+            <br />
 
-          <button>Submit</button>
-        </form>
-      </div>
+            <button>Submit</button>
+          </form>
+        </div>
       </div>
     </>
   );

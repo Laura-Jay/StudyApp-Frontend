@@ -43,7 +43,6 @@ export default function MyStudyList(props: MyStudyListProps): JSX.Element {
 
   const currentUserid = props.currentUserId;
 
-
   const studyList = studyListArray.map((resource) => (
     <>
       <SingleStudyListElement

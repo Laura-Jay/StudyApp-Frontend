@@ -62,6 +62,8 @@ export default function SingleStudyListElement(
         </section>
       </a>
       <div className="button-container">
+        <button onClick={handleLike}>Up Vote</button>
+        <button onClick={handleDislike}>Down Vote</button>
         <button onClick={() => handleDelete(props.resourceId)}>
           Remove from Study List
         </button>

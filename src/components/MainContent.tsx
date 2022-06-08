@@ -262,15 +262,14 @@ export default function MainContent(): JSX.Element {
         </>
       )}
       {/* rendering on when we click to the random page */}
-      {view === "random" && 
-      <>
-      <div className="button-bar">
-     
-      <button onClick={handleHomeClick}>Home</button>
-     
-    </div>
-      <RandomResourcePage allResources={allResources}  />
-      </>}
+      {view === "random" && (
+        <>
+          <div className="button-bar">
+            <button onClick={handleHomeClick}>Home</button>
+          </div>
+          <RandomResourcePage allResources={allResources} />
+        </>
+      )}
       {/* rendering on when we click to the form*/}
       {view === "form" && (
         <>
