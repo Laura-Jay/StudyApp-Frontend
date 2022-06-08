@@ -1,7 +1,7 @@
 export default function Header(): JSX.Element {
   return (
-    <section className="header">
+    <header>
       <h1>BOOKFACE</h1>
-    </section>
+    </header>
   );
 }

@@ -1,7 +1,7 @@
 import { ResourceDataInterface } from "./interfaces";
-import SingleStudyResourceCarousel from "./SingleStudyResourceCarousel";
+import SingleStudyResource from "./SingleStudyResource";
 
-export default function RecentResources(props: {
+export default function TagResourceList(props: {
   allResources: ResourceDataInterface[];
   loggedInUserId: number;
 }): JSX.Element {
@@ -9,8 +9,8 @@ export default function RecentResources(props: {
   return (
     <>
       <div className="grid-wrapper">
-        {props.allResources.slice(0, 5).map((resource) => (
-          <SingleStudyResourceCarousel
+        {props.allResources.map((resource) => (
+          <SingleStudyResource
             key={resource.resourceid}
             resourceName={resource.name}
             authorName={resource.author_name}

@@ -108,26 +108,24 @@ export default function SingleStudyResourcePage(): JSX.Element {
     <>
       <Header />
       {/*using react router to go back to the home page */}
-      <button className="home--button" onClick={() => navigate(-1)}>
-        Home
-      </button>
+      <div className="button-bar">
+        <button onClick={() => navigate(-1)}>Home</button>
+        {user_id !== "0" && (
+          <button onClick={handleAddToStudyList}>Add to Study List</button>
+        )}
+      </div>
       <section className="single-resource-page">
-        <h3>{currentResource.name}</h3>
-        <h3>{currentResource.author_name}</h3>
-        <h3>{currentResource.content_type}</h3>
-        <h3>{currentResource.creation_date}</h3>
-        <h3>{currentResource.url}</h3>
+        <h1 className="heading">{currentResource.name}</h1>
+        <h3>Recommended By: {currentResource.author_name}</h3>
+        <h3>Content Type: {currentResource.content_type}</h3>
+        <h3>{new Date(currentResource.creation_date).toDateString()}</h3>
+        <a href={currentResource.url}>{currentResource.url}</a>
         <p>{currentResource.description}</p>
-        <h3>{currentResource.tags}</h3>
-        <h3>{currentResource.stage}</h3>
+        <h3>Tags: {currentResource.tags.split(" ").join(", ")}</h3>
+        <h3>Relevant Course Stage: {currentResource.stage}</h3>
         <p>{currentResource.original_recommendation}</p>
         <p>{currentResource.recommendation_reasoning}</p>
         {/*logic to only display the add to study list button  and comments if the user is logged in*/}
-        {user_id !== "0" && (
-          <button className="like-button" onClick={handleAddToStudyList}>
-            Add to Study List
-          </button>
-        )}
       </section>
       {user_id !== "0" && (
         <section className="comments">

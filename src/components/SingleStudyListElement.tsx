@@ -1,30 +1,30 @@
 import axios from "axios";
 import { backendURL, frontendURL } from "../utils/URLs";
-import { SingleStudyResourceProps, likeDataInterface } from "./interfaces";
+import { SingleStudyResourceProps } from "./interfaces";
 
 //component used for MyStudyList component
 export default function SingleStudyListElement(
   props: SingleStudyResourceProps
 ): JSX.Element {
-  //adding like for each resource and posting to backend
-  async function handleLike() {
-    const requestData: likeDataInterface = {
-      likeValue: true,
-      resourceID: props.resourceId,
-      userID: props.userId,
-    };
-    await axios.post(backendURL + "likes", requestData);
-  }
+  // //adding like for each resource and posting to backend
+  // async function handleLike() {
+  //   const requestData: likeDataInterface = {
+  //     likeValue: true,
+  //     resourceID: props.resourceId,
+  //     userID: props.userId,
+  //   };
+  //   await axios.post(backendURL + "likes", requestData);
+  // }
 
-  //adding dislike for each resource and posting to backend
-  async function handleDislike() {
-    const requestData: likeDataInterface = {
-      likeValue: false,
-      resourceID: props.resourceId,
-      userID: props.userId,
-    };
-    await axios.post(backendURL + "likes", requestData);
-  }
+  // //adding dislike for each resource and posting to backend
+  // async function handleDislike() {
+  //   const requestData: likeDataInterface = {
+  //     likeValue: false,
+  //     resourceID: props.resourceId,
+  //     userID: props.userId,
+  //   };
+  //   await axios.post(backendURL + "likes", requestData);
+  // }
 
   async function handleDelete(resourceId: number) {
     const response = await axios.delete(
@@ -62,8 +62,6 @@ export default function SingleStudyListElement(
         </section>
       </a>
       <div className="button-container">
-        <button onClick={handleLike}>Up Vote</button>
-        <button onClick={handleDislike}>Down Vote</button>
         <button onClick={() => handleDelete(props.resourceId)}>
           Remove from Study List
         </button>

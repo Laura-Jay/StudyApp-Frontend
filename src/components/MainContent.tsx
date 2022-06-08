@@ -1,9 +1,7 @@
 import ResourceForm from "./ResourceForm";
-import Header from "./Header";
 import Footer from "./Footer";
 import RecentResources from "./RecentResources";
 import SearchTermResources from "./SearchTermResources";
-import UserRecommendations from "./UserRecommendations";
 import MyStudyList from "./MyStudyList";
 import { useState, useEffect } from "react";
 import { ResourceDataInterface, AllUsersInterface } from "./interfaces";
@@ -120,7 +118,16 @@ export default function MainContent(): JSX.Element {
   // "0" is our id for a logged out user
   function handleLogOut() {
     setCurrentUser("0");
+    setView("home");
   }
+
+  // function getUserName() {
+  //   for (const user of allUsers){
+  //     if (user.userid===parseInt(currentUser)){
+  //       return user.name
+  //     }
+  //   }
+  // }
 
   // filter searched terms by what has been entered into the search box
   function handleSearchButtonClick() {
@@ -139,6 +146,7 @@ export default function MainContent(): JSX.Element {
     );
 
     setIsSearchTermClicked(true);
+    setIsTagSelected(false);
   }
 
   const data = countArrayOfTags;
@@ -149,6 +157,7 @@ export default function MainContent(): JSX.Element {
       allResources.filter((object) => object.tags.includes(tagValue))
     ),
       setIsTagSelected(true);
+    setIsSearchTermClicked(false);
   }
 
   function handleSearchTerm(event: React.ChangeEvent<HTMLInputElement>) {
@@ -170,39 +179,45 @@ export default function MainContent(): JSX.Element {
 
   return (
     <>
-      <Header />
       {/* rendering on the homepage */}
       {view === "home" && (
         <>
-          <div className="login">
-            <select
-              className="user--select"
-              onChange={handleUserChange}
-              value={currentUser}
-            >
-              <option value="0">-- Select a user --</option>
-              {allUsers.map((user) => (
-                <option key={user.userid} value={user.userid}>
-                  {user.name}
-                </option>
-              ))}
-            </select>
-            <button onClick={handleLogOut}>Log Out</button>
-          </div>
-          <div className="button-bar">
-            <button onClick={handleRandomPageClick}>See Random</button>
-            {currentUser !== (0 || "0") && (
-              <button onClick={handleStudyListClick}>My Study List</button>
-            )}
-          </div>
-          <div className="tags">
-            <TagCloud
-              minSize={12}
-              maxSize={35}
-              tags={data}
-              onClick={(tag: TagInterface) => handleTagClick(tag.value)}
-            />
-          </div>
+          <header>
+            <h1>BOOKFACE</h1>
+
+            <div className="login">
+              <select
+                className="user--select"
+                onChange={handleUserChange}
+                value={currentUser}
+              >
+                <option value="0">-- Select a user --</option>
+                {allUsers.map((user) => (
+                  <option key={user.userid} value={user.userid}>
+                    {user.name}
+                  </option>
+                ))}
+              </select>
+              <button onClick={handleLogOut}>Log Out</button>
+            </div>
+          </header>
+
+          <nav>
+            <div className="button-bar">
+              <button onClick={handleRandomPageClick}>See Random</button>
+              {currentUser !== (0 || "0") && (
+                <div>
+                  <button onClick={handleStudyListClick}>My Study List</button>
+                  <button onClick={handleUploadClick}>Add Resource</button>
+                </div>
+              )}
+            </div>
+          </nav>
+
+          <h1 className="heading">Search</h1>
+          <p className="sub-heading">
+            Find the latest study resources being shared by members!
+          </p>
           <div className="search">
             <input
               className="search--input"
@@ -221,14 +236,14 @@ export default function MainContent(): JSX.Element {
               <button onClick={handleResetSearchTerm}>Reset Search</button>
             )}
           </div>
-
-          {currentUser !== (0 || "0") && (
-            <div className="upload">
-              <button onClick={handleUploadClick} className="upload--button">
-                Add Resource
-              </button>
-            </div>
-          )}
+          <div className="tags">
+            <TagCloud
+              minSize={12}
+              maxSize={35}
+              tags={data}
+              onClick={(tag: TagInterface) => handleTagClick(tag.value)}
+            />
+          </div>
 
           {isSearchTermClicked && (
             <div className="search-list">
@@ -254,16 +269,23 @@ export default function MainContent(): JSX.Element {
               />
             </div>
           )}
-          <RecentResources
-            allResources={allResources}
-            loggedInUserId={parseInt(currentUser)}
-          />
-          <UserRecommendations />
+          <div className="main-list">
+            <RecentResources
+              allResources={allResources}
+              loggedInUserId={parseInt(currentUser)}
+            />
+          </div>
         </>
       )}
       {/* rendering on when we click to the random page */}
       {view === "random" && (
         <>
+          <header>
+            <h1>BOOKFACE</h1>
+            <div className="login">
+              <button onClick={handleLogOut}>Log Out</button>
+            </div>
+          </header>
           <div className="button-bar">
             <button onClick={handleHomeClick}>Home</button>
           </div>
@@ -283,18 +305,26 @@ export default function MainContent(): JSX.Element {
       )}
       {/* rendering on when we click to the study-list*/}
       {view === "study-list" && (
-        <section className="study-list">
+        <>
+          <header>
+            <h1>BOOKFACE</h1>
+
+            <div className="login">
+              <button onClick={handleLogOut}>Log Out</button>
+            </div>
+          </header>
           <div className="button-bar">
             <button>See Random</button>
             <button onClick={handleHomeClick}>Home</button>
-            <button>Popular Content</button>
           </div>
           <h1 className="heading">My Study List</h1>
           <p className="sub-heading">
             Add resources to your list and work through them at your own pace.
           </p>
-          <MyStudyList currentUserId={parseInt(currentUser)} />
-        </section>
+          <div className="main-list">
+            <MyStudyList currentUserId={parseInt(currentUser)} />
+          </div>
+        </>
       )}
       <Footer />
     </>
