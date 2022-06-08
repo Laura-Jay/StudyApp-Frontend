@@ -109,15 +109,11 @@ export default function SingleStudyResourcePage(): JSX.Element {
       <Header />
       {/*using react router to go back to the home page */}
       <div className="button-bar">
-      <button  onClick={() => navigate(-1)}>
-        Home
-      </button>
-      {user_id !== "0" && (
-          <button onClick={handleAddToStudyList}>
-            Add to Study List
-          </button>
+        <button onClick={() => navigate(-1)}>Home</button>
+        {user_id !== "0" && (
+          <button onClick={handleAddToStudyList}>Add to Study List</button>
         )}
-        </div>
+      </div>
       <section className="single-resource-page">
         <h1 className="heading">{currentResource.name}</h1>
         <h3>Recommended By: {currentResource.author_name}</h3>
@@ -125,7 +121,7 @@ export default function SingleStudyResourcePage(): JSX.Element {
         <h3>{new Date(currentResource.creation_date).toDateString()}</h3>
         <a href={currentResource.url}>{currentResource.url}</a>
         <p>{currentResource.description}</p>
-        <h3>Tags: {currentResource.tags.split(' ').join(', ')}</h3>
+        <h3>Tags: {currentResource.tags.split(" ").join(", ")}</h3>
         <h3>Relevant Course Stage: {currentResource.stage}</h3>
         <p>{currentResource.original_recommendation}</p>
         <p>{currentResource.recommendation_reasoning}</p>

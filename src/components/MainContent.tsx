@@ -1,5 +1,4 @@
 import ResourceForm from "./ResourceForm";
-import Header from "./Header";
 import Footer from "./Footer";
 import RecentResources from "./RecentResources";
 import SearchTermResources from "./SearchTermResources";
@@ -158,7 +157,7 @@ export default function MainContent(): JSX.Element {
       allResources.filter((object) => object.tags.includes(tagValue))
     ),
       setIsTagSelected(true);
-      setIsSearchTermClicked(false);
+    setIsSearchTermClicked(false);
   }
 
   function handleSearchTerm(event: React.ChangeEvent<HTMLInputElement>) {
@@ -183,44 +182,42 @@ export default function MainContent(): JSX.Element {
       {/* rendering on the homepage */}
       {view === "home" && (
         <>
-         <header>
-      <h1>BOOKFACE</h1>
+          <header>
+            <h1>BOOKFACE</h1>
 
-          <div className="login">
-            <select
-              className="user--select"
-              onChange={handleUserChange}
-              value={currentUser}
-            >
-              <option value="0">-- Select a user --</option>
-              {allUsers.map((user) => (
-                <option key={user.userid} value={user.userid}>
-                  {user.name}
-                </option>
-              ))}
-            </select>
-            <button onClick={handleLogOut}>Log Out</button>
-          </div>
+            <div className="login">
+              <select
+                className="user--select"
+                onChange={handleUserChange}
+                value={currentUser}
+              >
+                <option value="0">-- Select a user --</option>
+                {allUsers.map((user) => (
+                  <option key={user.userid} value={user.userid}>
+                    {user.name}
+                  </option>
+                ))}
+              </select>
+              <button onClick={handleLogOut}>Log Out</button>
+            </div>
           </header>
 
           <nav>
-          <div className="button-bar">
-            <button onClick={handleRandomPageClick}>See Random</button>
-            {currentUser !== (0 || "0") && (
-              <div>
-              <button onClick={handleStudyListClick}>My Study List</button>
-              <button onClick={handleUploadClick} >
-                  Add Resource
-                </button>
-              </div>
-            )}
-          </div>
+            <div className="button-bar">
+              <button onClick={handleRandomPageClick}>See Random</button>
+              {currentUser !== (0 || "0") && (
+                <div>
+                  <button onClick={handleStudyListClick}>My Study List</button>
+                  <button onClick={handleUploadClick}>Add Resource</button>
+                </div>
+              )}
+            </div>
           </nav>
 
           <h1 className="heading">Search</h1>
           <p className="sub-heading">
-        Find the latest study resources being shared by members!
-      </p>
+            Find the latest study resources being shared by members!
+          </p>
           <div className="search">
             <input
               className="search--input"
@@ -247,7 +244,6 @@ export default function MainContent(): JSX.Element {
               onClick={(tag: TagInterface) => handleTagClick(tag.value)}
             />
           </div>
-        
 
           {isSearchTermClicked && (
             <div className="search-list">
@@ -274,22 +270,22 @@ export default function MainContent(): JSX.Element {
             </div>
           )}
           <div className="main-list">
-          <RecentResources
-            allResources={allResources}
-            loggedInUserId={parseInt(currentUser)}
-          />
+            <RecentResources
+              allResources={allResources}
+              loggedInUserId={parseInt(currentUser)}
+            />
           </div>
         </>
       )}
       {/* rendering on when we click to the random page */}
       {view === "random" && (
         <>
-        <header>
-         <h1>BOOKFACE</h1>
-<div className="login">
-  <button onClick={handleLogOut}>Log Out</button>
-</div>
-</header>
+          <header>
+            <h1>BOOKFACE</h1>
+            <div className="login">
+              <button onClick={handleLogOut}>Log Out</button>
+            </div>
+          </header>
           <div className="button-bar">
             <button onClick={handleHomeClick}>Home</button>
           </div>
@@ -309,14 +305,14 @@ export default function MainContent(): JSX.Element {
       )}
       {/* rendering on when we click to the study-list*/}
       {view === "study-list" && (
-       <>
-         <header>
-         <h1>BOOKFACE</h1>
-   
-             <div className="login">
-               <button onClick={handleLogOut}>Log Out</button>
-             </div>
-             </header>
+        <>
+          <header>
+            <h1>BOOKFACE</h1>
+
+            <div className="login">
+              <button onClick={handleLogOut}>Log Out</button>
+            </div>
+          </header>
           <div className="button-bar">
             <button>See Random</button>
             <button onClick={handleHomeClick}>Home</button>
@@ -326,9 +322,9 @@ export default function MainContent(): JSX.Element {
             Add resources to your list and work through them at your own pace.
           </p>
           <div className="main-list">
-          <MyStudyList currentUserId={parseInt(currentUser)} />
+            <MyStudyList currentUserId={parseInt(currentUser)} />
           </div>
-          </>
+        </>
       )}
       <Footer />
     </>

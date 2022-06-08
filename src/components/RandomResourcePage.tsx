@@ -38,19 +38,19 @@ export default function RandomResourcePage(props: {
   return (
     <>
       <section className="single-resource-page">
-      <h1 className="heading">{currentResource.name}</h1>
+        <h1 className="heading">{currentResource.name}</h1>
         <h3>Recommended By: {currentResource.author_name}</h3>
         <h3>Content Type: {currentResource.content_type}</h3>
         <h3>{new Date(currentResource.creation_date).toDateString()}</h3>
         <a href={currentResource.url}>{currentResource.url}</a>
         <p>{currentResource.description}</p>
-        <h3>Tags: {currentResource.tags.split(' ').join(', ')}</h3>
+        <h3>Tags: {currentResource.tags.split(" ").join(", ")}</h3>
         <h3>Relevant Course Stage: {currentResource.stage}</h3>
         <p>{currentResource.original_recommendation}</p>
         <p>{currentResource.recommendation_reasoning}</p>
       </section>
       <div className="button-bar">
-      <button onClick={handleReload}>Get Another Resource</button>
+        <button onClick={handleReload}>Get Another Resource</button>
       </div>
     </>
   );

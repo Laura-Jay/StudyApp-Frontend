@@ -33,7 +33,7 @@ export default function RecentResources(props: {
       <p className="sub-heading">
         Find the latest study resources being shared by members!
       </p>
-        <div className="grid-wrapper">{recent10Carousel}</div>
+      <div className="grid-wrapper">{recent10Carousel}</div>
     </>
   );
 }

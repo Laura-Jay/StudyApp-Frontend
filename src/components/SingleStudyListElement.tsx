@@ -1,6 +1,6 @@
 import axios from "axios";
 import { backendURL, frontendURL } from "../utils/URLs";
-import { SingleStudyResourceProps, likeDataInterface } from "./interfaces";
+import { SingleStudyResourceProps } from "./interfaces";
 
 //component used for MyStudyList component
 export default function SingleStudyListElement(

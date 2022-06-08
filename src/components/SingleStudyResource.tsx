@@ -1,6 +1,5 @@
-import axios from "axios";
-import { backendURL, frontendURL } from "../utils/URLs";
-import { SingleStudyResourceProps, likeDataInterface } from "./interfaces";
+import { frontendURL } from "../utils/URLs";
+import { SingleStudyResourceProps } from "./interfaces";
 
 //used in RecentResources component to show each study resource
 export default function SingleStudyResource(
