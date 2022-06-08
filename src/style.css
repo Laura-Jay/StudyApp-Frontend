@@ -152,9 +152,28 @@ a {
   border-width: 4px;
   border-radius: 10px;
   color: #ff5a5f;
-  width: 275px;
-  height: 375px;
+  min-width: 70vw;
+  height: 450x;
   box-shadow: 2px 5px 5px 1px rgba(120, 120, 120, 0.44);
+}
+
+@media (min-width: 600px) {
+  .study-resource-element {
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    word-wrap: break-word;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    background: #e4dddd;
+    border-width: 4px;
+    border-radius: 10px;
+    color: #ff5a5f;
+    width: 275px;
+    height: 375px;
+    box-shadow: 2px 5px 5px 1px rgba(120, 120, 120, 0.44);
+  }
 }
 
 .photobanner {
