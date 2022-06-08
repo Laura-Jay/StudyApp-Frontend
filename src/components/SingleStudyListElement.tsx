@@ -2,8 +2,8 @@ import axios from "axios";
 import { backendURL, frontendURL } from "../utils/URLs";
 import { SingleStudyResourceProps, likeDataInterface } from "./interfaces";
 
-//used in RecentResources component to show each study resource
-export default function SingleStudyResource(
+//component used for MyStudyList component
+export default function SingleStudyListElement(
   props: SingleStudyResourceProps
 ): JSX.Element {
   //adding like for each resource and posting to backend
@@ -26,8 +26,16 @@ export default function SingleStudyResource(
     await axios.post(backendURL + "likes", requestData);
   }
 
+  async function handleDelete(resourceId: number) {
+    const response = await axios.delete(
+      backendURL + "studylist/" + props.loggedInUserId + "/" + resourceId
+    );
+    console.log(response);
+  }
+
   return (
-    <div>
+    <div className="grid-element">
+      {/*link to the single study resource page which includes the logged in user id */}
       <a
         href={
           frontendURL +
@@ -37,7 +45,7 @@ export default function SingleStudyResource(
           props.loggedInUserId
         }
       >
-        <section className="single-resource-element">
+        <section className="study-resource-element">
           <h3>
             <strong>Resource Name:</strong> {props.resourceName}
           </h3>
@@ -53,12 +61,9 @@ export default function SingleStudyResource(
           </p>
         </section>
       </a>
-      <div className="button-bar">
-        <button className="like-button" onClick={handleLike}>
-          👍
-        </button>
-        <button className="like-button" onClick={handleDislike}>
-          👎
+      <div className="button-container">
+        <button onClick={() => handleDelete(props.resourceId)}>
+          Remove from Study List
         </button>
       </div>
     </div>

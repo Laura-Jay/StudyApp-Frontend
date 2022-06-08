@@ -3,7 +3,7 @@ import { backendURL, frontendURL } from "../utils/URLs";
 import { SingleStudyResourceProps, likeDataInterface } from "./interfaces";
 
 //used in RecentResources component to show each study resource
-export default function SingleStudyResource(
+export default function SingleStudyResourceCarousel(
   props: SingleStudyResourceProps
 ): JSX.Element {
   //adding like for each resource and posting to backend
@@ -37,7 +37,7 @@ export default function SingleStudyResource(
           props.loggedInUserId
         }
       >
-        <section className="single-resource-element">
+        <section className="single-resource-element-carousel">
           <h3>
             <strong>Resource Name:</strong> {props.resourceName}
           </h3>

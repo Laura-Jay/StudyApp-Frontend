@@ -16,6 +16,7 @@ interface FormDataInterface {
 }
 
 export default function ResourceForm(props: { userid: number }): JSX.Element {
+  //useState to hold stored form data inputs prior to posting to backend
   const [formData, setFormData] = useState<FormDataInterface>({
     resourceName: "",
     authorName: "",
@@ -64,7 +65,7 @@ export default function ResourceForm(props: { userid: number }): JSX.Element {
     "I do not recommend this resource, having used it",
     "I haven't used this resource but it looks promising",
   ];
-
+  // function to store form data inputs to formData useState maintaining a single source of truth
   function handleFormChange(
     event:
       | React.ChangeEvent<HTMLTextAreaElement>
@@ -76,11 +77,25 @@ export default function ResourceForm(props: { userid: number }): JSX.Element {
       return { ...previous, [name]: value };
     });
   }
-
+  // function to send a post request to discord webhook when a user adds a resource with relevant resource info included
+  function handleDiscordPost(endpoint: number) {
+    const request = new XMLHttpRequest();
+    request.open(
+      "POST",
+      "https://discord.com/api/webhooks/976462945632530483/3B-qlnfOAkY_wnddfGsGzhUixpEw8aIl_9W0okggMNkArPonhiwcC97P_xl7FyuVZG98"
+    );
+    request.setRequestHeader("Content-type", "application/json");
+    const params = {
+      content: `Title: ${formData.resourceName}, resource link: ${formData.URL}, check out new resource:  https://www.academy-study-resources.netlify.app/${endpoint}`,
+    };
+    request.send(JSON.stringify(params));
+  }
+  // function to post data stored in formData useState to backend and call the discord post function on submission
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const response = await axios.post(backendURL + "resources", formData);
-    console.log(response);
+    const currentResourceid = response.data.data.info[0].resourceid
+    handleDiscordPost(currentResourceid);
     setFormData({
       resourceName: "",
       authorName: "",
@@ -93,15 +108,18 @@ export default function ResourceForm(props: { userid: number }): JSX.Element {
       reasonForRecommendation: "",
       userid: props.userid,
     });
+  
   };
 
   return (
     <>
-      <h1>Resource Form</h1>
+      <h1 className="heading">Resource Form</h1>
+      <div className="resource-form-container">
       <div className="resource-form">
         <form onSubmit={handleSubmit}>
           <label htmlFor="resource-form-resourceName">Resource Name:</label>
           <input
+            className="form--input"
             onChange={(event) => handleFormChange(event)}
             type="text"
             placeholder="type resource name here"
@@ -111,6 +129,7 @@ export default function ResourceForm(props: { userid: number }): JSX.Element {
           />
           <label htmlFor="resource-form-authorName">Author Name:</label>
           <input
+            className="form--input"
             onChange={(event) => handleFormChange(event)}
             type="text"
             placeholder="type Author name here"
@@ -120,6 +139,7 @@ export default function ResourceForm(props: { userid: number }): JSX.Element {
           />
           <label htmlFor="resource-form-URL">URL:</label>
           <input
+            className="form--input"
             onChange={(event) => handleFormChange(event)}
             type="text"
             placeholder="type URL name here"
@@ -138,6 +158,7 @@ export default function ResourceForm(props: { userid: number }): JSX.Element {
           />
           <label htmlFor="resource-form-tags">Tags:</label>
           <input
+            className="form--input"
             onChange={(event) => handleFormChange(event)}
             type="text"
             placeholder="type tags here (example: react, typescript, online course)"
@@ -147,6 +168,7 @@ export default function ResourceForm(props: { userid: number }): JSX.Element {
           />
           <label htmlFor="resource-form-resourceType">Resource Type:</label>
           <select
+            className="form--select"
             onChange={(event) => handleFormChange(event)}
             value={formData.resourceType}
             name="resourceType"
@@ -161,6 +183,7 @@ export default function ResourceForm(props: { userid: number }): JSX.Element {
 
           <label htmlFor="resource-form-weeks">Build Phase Week:</label>
           <select
+            className="form--select"
             onChange={(event) => handleFormChange(event)}
             value={formData.buildPhaseWeek}
             name="buildPhaseWeek"
@@ -175,6 +198,7 @@ export default function ResourceForm(props: { userid: number }): JSX.Element {
 
           <label htmlFor="resource-form-recommendation">Recommendation:</label>
           <select
+            className="form--select"
             onChange={(event) => handleFormChange(event)}
             value={formData.recommendation}
             name="recommendation"
@@ -191,8 +215,8 @@ export default function ResourceForm(props: { userid: number }): JSX.Element {
             Reason for recommendation:
           </label>
           <textarea
+            className="resource-form--description"
             onChange={(event) => handleFormChange(event)}
-            className="resource-form--reason-recommendation"
             placeholder="type reason here"
             name="reasonForRecommendation"
             value={formData.reasonForRecommendation}
@@ -202,6 +226,7 @@ export default function ResourceForm(props: { userid: number }): JSX.Element {
 
           <button>Submit</button>
         </form>
+      </div>
       </div>
     </>
   );
