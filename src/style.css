@@ -124,7 +124,7 @@ a {
   display: flex;
   gap: 40px;
   flex-wrap: wrap;
-  flex-direction: row;
+  flex-direction: column;
   max-width: 85%;
   justify-content: center;
   margin-top: 30px;
@@ -152,12 +152,12 @@ a {
   border-width: 4px;
   border-radius: 10px;
   color: #ff5a5f;
-  min-width: 70vw;
+  width: 70vw;
   height: 450x;
   box-shadow: 2px 5px 5px 1px rgba(120, 120, 120, 0.44);
 }
 
-@media (min-width: 600px) {
+@media only screen and (min-width: 850px) {
   .study-resource-element {
     display: flex;
     flex-direction: column;
@@ -170,9 +170,44 @@ a {
     border-width: 4px;
     border-radius: 10px;
     color: #ff5a5f;
-    width: 275px;
-    height: 375px;
+    min-width: 400px;
+    max-width: 35vw;
     box-shadow: 2px 5px 5px 1px rgba(120, 120, 120, 0.44);
+  }
+
+  .grid-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    justify-content: center;
+    margin: 30px 20%;
+  }
+}
+
+@media only screen and (min-width: 1450px) {
+  .study-resource-element {
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    word-wrap: break-word;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    background: #e4dddd;
+    border-width: 4px;
+    border-radius: 10px;
+    color: #ff5a5f;
+
+    max-width: 25vw;
+    box-shadow: 2px 5px 5px 1px rgba(120, 120, 120, 0.44);
+  }
+
+  .grid-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    justify-content: center;
+    margin: 30px 10vw;
   }
 }
 
