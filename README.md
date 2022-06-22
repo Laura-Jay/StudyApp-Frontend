@@ -1,13 +1,12 @@
 
 BookFace: Study Resource Sharing Website for Academy Students
 
-Creator: Laura Jamieson
-
 Fullstack PERN Application
 
 Adapted from an existing team project team Project, https://github.com/sajsiv/Study-Resource-Catalog-App-Frontend
 Please follow for collaborator links. 
 
+Figma: https://www.figma.com/file/8g5iqo77MFnvVaEFTcjsck/Study-Resources
 Deployed Site: https://studyapp-lj.netlify.app/
 Back End: https://github.com/Laura-Jay/Study-Backend
 
